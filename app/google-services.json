@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "551754605600",
+    "firebase_url": "https://stori-e4e8d-default-rtdb.firebaseio.com",
+    "project_id": "stori-e4e8d",
+    "storage_bucket": "stori-e4e8d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:551754605600:android:4a9699d5f65512f8690845",
+        "android_client_info": {
+          "package_name": "com.stori.challenge"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaiXf-x8uftXc3J40Q6ZzSTUYLklw1tjQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
