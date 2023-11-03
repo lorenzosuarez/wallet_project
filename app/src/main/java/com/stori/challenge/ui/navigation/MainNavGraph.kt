@@ -82,7 +82,6 @@ fun MainNavGraph(
         ) {
             SignInScreen(
                 navController = navController,
-                mainViewModel = mainViewModel,
                 callBack = callBackMessage,
             )
         }
