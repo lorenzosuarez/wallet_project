@@ -30,6 +30,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
@@ -44,7 +45,9 @@ import com.stori.challenge.ui.navigation.TXN
 import com.stori.challenge.ui.navigation.UID
 import com.stori.challenge.ui.theme.LocalDim
 import com.stori.challenge.ui.viewmodels.MainViewModel
+import com.stori.challenge.util.extensions.debounceClick
 import com.stori.challenge.util.extensions.safeNavigate
+import com.stori.challenge.util.extensions.toTwoDecimals
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
@@ -73,8 +76,6 @@ fun HomeScreen(
                 is MainEvent.ActionEvent -> {
                     openLogoutAlertDialog = !openLogoutAlertDialog
                 }
-
-                else -> Unit
             }
         }
     }
@@ -133,6 +134,7 @@ fun HomeScreen(
                         .fillMaxWidth()
                         .alpha(if (isLoading) 0f else 1f),
                     title = "Account balance",
+                    currencyFlag = R.drawable.ic_usa_flag,
                     accountBalance = {
                         ShimmerContent(
                             showShimmer = isLoading,
@@ -140,11 +142,11 @@ fun HomeScreen(
                         ) {
                             Text(
                                 modifier = Modifier.alpha(if (isLoading) 0f else 1f),
-                                text = "$${userTransactionData?.amount ?: 00.00} USD",
+                                text = "${userTransactionData?.amount?.toTwoDecimals() ?: 00.00} USD",
                                 style = MaterialTheme.typography.labelLarge.copy(
-                                    fontWeight = FontWeight.ExtraBold,
-                                    fontSize = 23.sp,
-                                    letterSpacing = 1.0.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 25.sp,
+                                    letterSpacing = 1.3.sp,
                                 ),
                             )
                         }
@@ -202,15 +204,22 @@ fun HomeScreen(
                             with(item) {
                                 TransactionItem(
                                     modifier = Modifier.fillMaxWidth(),
-                                    transactionTitle = transactionDetail,
+                                    transactionType = stringResource(
+                                        id = when (transactionType) {
+                                            1 -> R.string.type_transaction_sent_short
+                                            else -> R.string.type_transaction_received_short
+                                        },
+                                    ).uppercase(),
                                     transactionAmount = transactionAmount,
                                     transactionTypeIcon = if (transactionNumber == 1) R.drawable.ic_txn_out else R.drawable.ic_txn_in,
                                     onClick = {
-                                        navController.safeNavigate(
-                                            route = Screen.Details.route,
-                                            argument = TXN to transactionNumber.toString(),
-                                        )
-                                    },
+                                        synchronized(this) {
+                                            navController.safeNavigate(
+                                                route = Screen.Details.route,
+                                                argument = TXN to transactionNumber.toString(),
+                                            )
+                                        }
+                                    }.debounceClick(),
                                 )
                             }
                         }

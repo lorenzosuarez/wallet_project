@@ -99,7 +99,7 @@ fun MainForm(mainViewModel: MainViewModel) {
                     },
                     navigationIcon = {
                         AnimatedVisibility(visible = currentScreen?.showBack == true) {
-                            IconButton(onClick = navController::popBackStack) {
+                            IconButton(onClick = navController::navigateUp) {
                                 Icon(
                                     painter = painterResource(id = R.drawable.ic_back),
                                     contentDescription = "back",

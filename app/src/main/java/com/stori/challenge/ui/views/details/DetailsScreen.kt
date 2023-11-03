@@ -34,6 +34,7 @@ fun DetailsScreen(
         navController.currentBackStackEntry?.arguments?.getString(TXN).orEmpty()
     }
     val dimensions = LocalDim.current
+    val colors = MaterialTheme.colorScheme
     val userProfileState = mainViewModel.userProfileState.value
     val userTransactionData = userProfileState.userTransactionData
     val transaction by remember {
@@ -61,10 +62,11 @@ fun DetailsScreen(
             Text(
                 text = "Transaction details",
                 maxLines = 1,
-                style = MaterialTheme.typography.labelLarge.copy(
+                style = MaterialTheme.typography.bodyMedium.copy(
                     fontSize = 22.sp,
                     fontWeight = FontWeight.ExtraBold,
                     letterSpacing = 1.5.sp,
+                    color = colors.outline,
                 ),
             )
         }
@@ -89,7 +91,8 @@ fun DetailsScreen(
                     maxLines = 1,
                     style = MaterialTheme.typography.labelLarge.copy(
                         fontSize = 21.sp,
-                        fontWeight = FontWeight.ExtraBold,
+                        fontWeight = FontWeight.Bold,
+                        color = colors.outline,
                     ),
                 )
 
@@ -97,8 +100,9 @@ fun DetailsScreen(
                     text = "$ ${t.transactionAmount}",
                     maxLines = 1,
                     style = MaterialTheme.typography.labelLarge.copy(
-                        fontWeight = FontWeight.ExtraBold,
-                        fontSize = 23.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = colors.outline,
+                        fontSize = 20.sp,
                         letterSpacing = 1.0.sp,
                     ),
                 )
@@ -119,8 +123,9 @@ fun DetailsScreen(
                     text = stringResource(R.string.transaction_number),
                     maxLines = 1,
                     style = MaterialTheme.typography.labelLarge.copy(
-                        fontSize = 21.sp,
-                        fontWeight = FontWeight.ExtraBold,
+                        fontSize = 19.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = colors.outline,
                     ),
                 )
 
@@ -128,8 +133,9 @@ fun DetailsScreen(
                     text = t.transactionNumber.toString().padStart(6, '0'),
                     maxLines = 1,
                     style = MaterialTheme.typography.labelLarge.copy(
-                        fontWeight = FontWeight.ExtraBold,
-                        fontSize = 19.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = colors.outline,
+                        fontSize = 17.sp,
                         letterSpacing = 1.0.sp,
                     ),
                 )
@@ -150,8 +156,9 @@ fun DetailsScreen(
                     text = stringResource(R.string.transaction_detail),
                     maxLines = 1,
                     style = MaterialTheme.typography.labelLarge.copy(
-                        fontSize = 21.sp,
-                        fontWeight = FontWeight.ExtraBold,
+                        fontSize = 19.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = colors.outline,
                     ),
                 )
 
@@ -159,8 +166,9 @@ fun DetailsScreen(
                     text = t.transactionDetail,
                     maxLines = 1,
                     style = MaterialTheme.typography.labelLarge.copy(
-                        fontWeight = FontWeight.ExtraBold,
-                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = colors.outline,
+                        fontSize = 16.sp,
                         letterSpacing = 1.0.sp,
                     ),
                 )

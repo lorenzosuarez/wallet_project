@@ -2,8 +2,10 @@
     <string name="app_name">StoriChallenge</string>
     <string name="transaction_detail">Transaction detail</string>
     <string name="transaction_number">Transaction number</string>
+    <string name="type_transaction_sent_short">Sent</string>
     <string name="type_transaction_sent">You sent</string>
     <string name="type_transaction_received">You received</string>
+    <string name="type_transaction_received_short">Received</string>
     <string name="register_title">Sign up</string>
     <string name="home_title">Home</string>
     <string name="details_title">Details</string>

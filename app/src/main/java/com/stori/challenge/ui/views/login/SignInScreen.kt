@@ -18,11 +18,11 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconToggleButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
@@ -47,14 +47,12 @@ import com.stori.challenge.ui.navigation.Screen
 import com.stori.challenge.ui.states.MainResultSate
 import com.stori.challenge.ui.theme.LocalDim
 import com.stori.challenge.ui.viewmodels.LoginViewModel
-import com.stori.challenge.ui.viewmodels.MainViewModel
-import com.stori.challenge.util.extensions.debounceClickable
+import com.stori.challenge.util.extensions.debounceClick
 import com.stori.challenge.util.extensions.safeNavigate
 import org.koin.androidx.compose.getViewModel
 
 @Composable
 fun SignInScreen(
-    mainViewModel: MainViewModel,
     loginViewModel: LoginViewModel = getViewModel(),
     navController: NavHostController,
     callBack: (String) -> Unit = {},
@@ -223,21 +221,24 @@ fun SignInScreen(
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Text(
-                text = "You are new? ",
+                text = "You are new?",
                 style = MaterialTheme.typography.labelLarge,
             )
 
-            Text(
-                modifier = Modifier.debounceClickable {
+            TextButton(
+                onClick = {
                     navController.safeNavigate(
                         route = Screen.Register.route,
                     )
-                },
-                text = "Sign up",
-                style = MaterialTheme.typography.labelLarge,
-                color = MaterialTheme.colorScheme.outline,
-                textDecoration = TextDecoration.Underline,
-            )
+                }.debounceClick(),
+            ) {
+                Text(
+                    text = "Sign up",
+                    style = MaterialTheme.typography.labelLarge,
+                    color = MaterialTheme.colorScheme.outline,
+                    textDecoration = TextDecoration.Underline,
+                )
+            }
         }
     }
 }
