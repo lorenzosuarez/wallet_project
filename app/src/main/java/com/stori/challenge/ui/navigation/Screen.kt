@@ -59,5 +59,7 @@ sealed class Screen(
             Home,
             Details,
         )
+
+        val Screen.hasActionIcon get() = actionIcon != null
     }
 }

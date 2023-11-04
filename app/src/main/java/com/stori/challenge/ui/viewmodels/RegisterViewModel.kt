@@ -13,6 +13,9 @@ import com.stori.challenge.ui.states.MainResultSate
 import com.stori.challenge.ui.states.RegisterState
 import com.stori.challenge.ui.states.UiState
 import com.stori.challenge.util.constants.Logger
+import com.stori.challenge.util.validators.ValidateEmail
+import com.stori.challenge.util.validators.ValidateName
+import com.stori.challenge.util.validators.ValidatePassword
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.asSharedFlow

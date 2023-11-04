@@ -13,6 +13,7 @@ firebase-storage-ktx = "20.3.0"
 junit = "4.13.2"
 koin-core = "3.4.3"
 lifecycle-runtime-ktx = "2.6.2"
+lottie-compose = "4.0.0"
 material = "1.6.0-alpha08"
 material3 = "1.1.2"
 navigation-compose = "2.7.4"
@@ -38,6 +39,7 @@ junit = { module = "junit:junit", version.ref = "junit" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin-core" }
 koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin-core" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin-core" }
+lottie-compose = { module = "com.airbnb.android:lottie-compose", version.ref = "lottie-compose" }
 
 [plugins]
 

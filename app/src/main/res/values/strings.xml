@@ -12,7 +12,7 @@
     <string name="type_transaction_moved">You moved</string>
     <string name="type_transaction_moved_short">Moved</string>
     <string name="account_created">Your account has been created</string>
-    <string name="log_out_message_title">Do you want logout?</string>
+    <string name="log_out_message_title">Do you want to log out?</string>
     <string name="log_out_message_subtitle">You will be returned to the login screen</string>
     <string name="success">Success!</string>
 
@@ -45,6 +45,6 @@
     <string name="password">Password</string>
     <string name="name">Name</string>
     <string name="last_name">Last name</string>
-    <string name="keep_me_sign_in">keep me sign ine</string>
+    <string name="remember_me">Remember me</string>
     <!--    endregion   -->
 </resources>

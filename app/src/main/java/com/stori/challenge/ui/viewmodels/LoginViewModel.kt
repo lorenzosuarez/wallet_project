@@ -6,12 +6,13 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.stori.challenge.domain.usecases.LoginUseCase
-import com.stori.challenge.domain.usecases.SaveLocalUserUseCase
 import com.stori.challenge.ui.events.LoginEvent
 import com.stori.challenge.ui.states.LoginState
 import com.stori.challenge.ui.states.MainResultSate
 import com.stori.challenge.ui.states.UiState
 import com.stori.challenge.util.constants.Logger
+import com.stori.challenge.util.validators.ValidateEmail
+import com.stori.challenge.util.validators.ValidatePassword
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch

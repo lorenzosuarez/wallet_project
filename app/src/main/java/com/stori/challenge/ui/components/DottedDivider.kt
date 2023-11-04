@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun DottedDivider(
     color: Color = MaterialTheme.colorScheme.outline,
-    strokeWidth: Float = 1f,
+    strokeWidth: Float = 1.3f,
     dashLength: Float = 10f,
     dashGap: Float = 10f,
 ) {

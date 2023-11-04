@@ -38,7 +38,7 @@ val storiTypography = Typography(
     titleMedium = TextStyle(
         fontFamily = StoriFonts.LatoBlack,
         fontWeight = FontWeight.SemiBold,
-        fontSize = 16.sp,
+        fontSize = 17.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.15.sp,
     ),
@@ -92,4 +92,3 @@ val storiTypography = Typography(
         letterSpacing = 0.5.sp,
     ),
 )
-

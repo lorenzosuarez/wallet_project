@@ -7,6 +7,7 @@ import androidx.compose.ui.unit.dp
 val LocalDim = compositionLocalOf { Dimensions() }
 
 data class Dimensions(
+    val textFieldHeight: Dp = 60.dp,
     val default: Dp = 0.dp,
     val spaceXXSmall: Dp = 2.dp,
     val spaceXSmall: Dp = 3.dp,
@@ -21,7 +22,7 @@ data class Dimensions(
     val mediumRounded: Dp = 20.dp,
     val largeRounded: Dp = 30.dp,
     val notRounded: Dp = 0.dp,
-    val paddingLarge: Dp = 22.dp,
+    val paddingLarge: Dp = 21.dp,
     val spaceLarge: Dp = 32.dp,
     val spaceExtraLarge: Dp = 75.dp,
     val spaceXXLarge: Dp = 128.dp,

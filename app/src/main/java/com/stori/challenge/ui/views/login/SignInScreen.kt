@@ -203,7 +203,7 @@ fun SignInScreen(
             )
             Spacer(Modifier.width(dimensions.spaceXXSmall))
             Text(
-                text = stringResource(id = R.string.keep_me_sign_in),
+                text = stringResource(id = R.string.remember_me),
                 style = MaterialTheme.typography.labelLarge,
             )
         }
@@ -227,11 +227,7 @@ fun SignInScreen(
             )
 
             TextButton(
-                onClick = {
-                    navController.safeNavigate(
-                        route = Screen.Register.route,
-                    )
-                }.debounceClick(),
+                onClick = { navController.safeNavigate(route = Screen.Register.route) }.debounceClick(),
             ) {
                 Text(
                     text = stringResource(id = R.string.register_title),

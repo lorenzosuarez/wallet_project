@@ -14,7 +14,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.stori.challenge.ui.theme.LocalDim
 
 @Composable
@@ -47,8 +49,12 @@ fun CustomButton(
                 horizontalArrangement = Arrangement.spacedBy(dimensions.spaceMedium),
             ) {
                 Text(
-                    text = buttonText,
-                    style = MaterialTheme.typography.labelLarge,
+                    text = buttonText.uppercase(),
+                    style = MaterialTheme.typography.labelLarge.copy(
+                        fontSize = 19.sp,
+                        fontWeight = FontWeight.ExtraBold,
+                        letterSpacing = 2.sp,
+                    ),
                 )
                 imageVector?.let { img ->
                     Icon(imageVector = img, contentDescription = img.name)

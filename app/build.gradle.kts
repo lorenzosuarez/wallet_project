@@ -82,6 +82,9 @@ dependencies {
     // Coil
     implementation(libs.coil.compose)
 
+    // Lottie
+    implementation(libs.lottie.compose)
+
     implementation(libs.androidx.datastore.preferences)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

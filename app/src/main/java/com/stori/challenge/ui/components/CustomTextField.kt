@@ -1,17 +1,12 @@
 package com.stori.challenge.ui.components
 
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.expandVertically
-import androidx.compose.animation.scaleIn
-import androidx.compose.animation.scaleOut
-import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Info
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Icon
@@ -25,7 +20,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.stori.challenge.R
 import com.stori.challenge.ui.states.UiState
 import com.stori.challenge.ui.theme.LocalDim
@@ -46,7 +40,7 @@ fun CustomTextField(
     val dimensions = LocalDim.current
     Column {
         OutlinedTextField(
-            modifier = modifier,
+            modifier = modifier.heightIn(min = dimensions.textFieldHeight),
             value = value,
             shape = MaterialTheme.shapes.medium,
             onValueChange = onValueChange,
@@ -83,6 +77,7 @@ fun CustomTextField(
                 )
             },
             maxLines = 1,
+            singleLine = true,
             colors = ExposedDropdownMenuDefaults.outlinedTextFieldColors(
                 unfocusedContainerColor = MaterialTheme.colorScheme.outlineVariant,
                 focusedContainerColor = MaterialTheme.colorScheme.outlineVariant,

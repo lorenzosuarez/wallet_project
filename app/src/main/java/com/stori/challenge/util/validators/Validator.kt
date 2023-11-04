@@ -1,4 +1,4 @@
-package com.stori.challenge.ui.viewmodels
+package com.stori.challenge.util.validators
 
 import com.stori.challenge.ui.states.UiState
 import com.stori.challenge.util.constants.EMAIL_REGEX
@@ -25,4 +25,3 @@ class ValidateEmail {
         override fun validate(input: String) = if (input.matches(EMAIL_REGEX.toRegex())) UiState.Idle else UiState.Error
     }
 }
-

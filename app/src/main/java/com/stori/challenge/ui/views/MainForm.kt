@@ -35,6 +35,12 @@ import com.stori.challenge.domain.entities.AuthenticationState.Unauthenticated
 import com.stori.challenge.ui.events.MainEvent
 import com.stori.challenge.ui.navigation.MainNavGraph
 import com.stori.challenge.ui.navigation.Screen
+import com.stori.challenge.ui.navigation.Screen.Companion.hasActionIcon
+import com.stori.challenge.ui.navigation.Screen.Home
+import com.stori.challenge.ui.navigation.Screen.Login
+import com.stori.challenge.ui.navigation.Screen.Register
+import com.stori.challenge.ui.navigation.Screen.Splash
+import com.stori.challenge.ui.navigation.Screen.Success
 import com.stori.challenge.ui.navigation.UID
 import com.stori.challenge.ui.theme.LocalDim
 import com.stori.challenge.ui.viewmodels.MainViewModel
@@ -44,41 +50,34 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainForm(mainViewModel: MainViewModel) {
-    val color = MaterialTheme.colorScheme
-    val dimensions = LocalDim.current
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(rememberTopAppBarState())
     val scope = rememberCoroutineScope()
     val snackbarHostState = remember { SnackbarHostState() }
     val navController = rememberNavController()
     val navBackStackEntry by navController.currentBackStackEntryAsState()
-    val currentScreen: Screen? = remember(navBackStackEntry) {
-        Screen.allScreens.find { it.route == navBackStackEntry?.destination?.route }
-    }
-    val authState = mainViewModel.authenticationState.collectAsState().value
-    val currentAuthState by rememberUpdatedState(authState)
+    val navCurrentScreen = remember(navBackStackEntry) {
+        Screen.allScreens.find { s -> s.route == navBackStackEntry?.destination?.route }
+    } ?: Splash
+    val currentScreen by rememberUpdatedState(navCurrentScreen)
+    val authenticationState = mainViewModel.authenticationState.collectAsState().value
+    val currentAuthState by rememberUpdatedState(authenticationState)
 
     LaunchedEffect(Unit) {
-        mainViewModel.authenticationState.collect { newAuthState ->
-            if (newAuthState != currentAuthState) {
-                with(navController) {
-                    when (newAuthState) {
-                        is Authenticated -> {
-                            val route = when (currentScreen) {
-                                is Screen.Register -> Screen.Success.route
-                                else -> Screen.Home.route
-                            }
-                            safeNavigate(
-                                route = route,
-                                argument = UID to newAuthState.uid,
-                                popUpToRoute = currentScreen?.route,
-                            )
-                        }
-                        is Unauthenticated -> safeNavigate(
-                            route = Screen.Login.route,
-                            popUpToRoute = currentScreen?.route,
-                        )
-                        is Initial -> return@collect
-                    }
+        mainViewModel.authenticationState.collect { authState ->
+            if (authState != currentAuthState) {
+                when (authState) {
+                    is Authenticated -> navController.safeNavigate(
+                        route = if (currentScreen is Register) Success.route else Home.route,
+                        argument = UID to authState.uid,
+                        popUpToRoute = currentScreen.route,
+                    )
+
+                    is Unauthenticated -> navController.safeNavigate(
+                        route = Login.route,
+                        popUpToRoute = currentScreen.route,
+                    )
+
+                    is Initial -> return@collect
                 }
             }
         }
@@ -86,14 +85,19 @@ fun MainForm(mainViewModel: MainViewModel) {
 
     Scaffold(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-        snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
+        snackbarHost = {
+            SnackbarHost(
+                modifier = Modifier.padding(vertical = LocalDim.current.spaceLarge),
+                hostState = snackbarHostState,
+            )
+        },
         topBar = {
-            AnimatedVisibility(visible = currentScreen?.showToolbar ?: false) {
+            AnimatedVisibility(visible = currentScreen.showToolbar) {
                 MediumTopAppBar(
                     title = {
                         Text(
-                            modifier = Modifier.padding(horizontal = dimensions.paddingSmall),
-                            text = currentScreen?.resTitle?.let { title -> stringResource(id = title) }
+                            modifier = Modifier.padding(horizontal = LocalDim.current.paddingSmall),
+                            text = currentScreen.resTitle?.let { title -> stringResource(id = title) }
                                 .orEmpty(),
                             maxLines = 1,
                             style = MaterialTheme.typography.titleLarge.copy(
@@ -102,23 +106,25 @@ fun MainForm(mainViewModel: MainViewModel) {
                         )
                     },
                     navigationIcon = {
-                        AnimatedVisibility(visible = currentScreen?.showBack == true) {
+                        AnimatedVisibility(visible = currentScreen.showBack) {
                             IconButton(onClick = navController::navigateUp) {
                                 Icon(
                                     painter = painterResource(id = R.drawable.ic_back),
                                     contentDescription = "back",
-                                    tint = color.inversePrimary,
+                                    tint = MaterialTheme.colorScheme.inversePrimary,
                                 )
                             }
                         }
                     },
                     actions = {
-                        currentScreen?.actionIcon?.let { actionIcon ->
+                        AnimatedVisibility(visible = currentScreen.hasActionIcon) {
                             IconButton(onClick = { mainViewModel.triggerEvent(MainEvent.ActionEvent) }) {
-                                Icon(
-                                    painter = painterResource(id = actionIcon),
-                                    contentDescription = "actionIcon",
-                                )
+                                currentScreen.actionIcon?.let { actionIcon ->
+                                    Icon(
+                                        painter = painterResource(id = actionIcon),
+                                        contentDescription = "actionIcon",
+                                    )
+                                }
                             }
                         }
                     },
