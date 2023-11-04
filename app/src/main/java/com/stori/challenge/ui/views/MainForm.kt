@@ -20,6 +20,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.painterResource
@@ -54,28 +55,31 @@ fun MainForm(mainViewModel: MainViewModel) {
         Screen.allScreens.find { it.route == navBackStackEntry?.destination?.route }
     }
     val authState = mainViewModel.authenticationState.collectAsState().value
+    val currentAuthState by rememberUpdatedState(authState)
 
-    LaunchedEffect(key1 = authState) {
-        with(navController) {
-            when (authState) {
-                is Authenticated -> {
-                    val route = when (currentScreen) {
-                        is Screen.Register -> Screen.Success.route
-                        else -> Screen.Home.route
+    LaunchedEffect(Unit) {
+        mainViewModel.authenticationState.collect { newAuthState ->
+            if (newAuthState != currentAuthState) {
+                with(navController) {
+                    when (newAuthState) {
+                        is Authenticated -> {
+                            val route = when (currentScreen) {
+                                is Screen.Register -> Screen.Success.route
+                                else -> Screen.Home.route
+                            }
+                            safeNavigate(
+                                route = route,
+                                argument = UID to newAuthState.uid,
+                                popUpToRoute = currentScreen?.route,
+                            )
+                        }
+                        is Unauthenticated -> safeNavigate(
+                            route = Screen.Login.route,
+                            popUpToRoute = currentScreen?.route,
+                        )
+                        is Initial -> return@collect
                     }
-                    safeNavigate(
-                        route = route,
-                        argument = UID to authState.uid,
-                        popUpToRoute = currentScreen?.route,
-                    )
                 }
-
-                is Unauthenticated -> safeNavigate(
-                    route = Screen.Login.route,
-                    popUpToRoute = currentScreen?.route,
-                )
-
-                is Initial -> return@LaunchedEffect
             }
         }
     }
