@@ -1,4 +1,4 @@
-# Stori Challenge: A Material3-based Android Experience 📱
+# Stori Challenge 📱
 
 Welcome to the repository for the Stori Challenge App. This project epitomizes modern Android development, incorporating Material3 design 🎨, Jetpack Compose 🖌️, and a clean architecture 🏗️ that adheres to SOLID principles for a scalable, maintainable, and robust application.
 
@@ -85,9 +85,3 @@ _Demo video to be placed here_
 ## License 📄
 
 This project is licensed under the MIT License
-
-A big thank you to the creators of the libraries and frameworks we've used in this application. Your work underpins the functionality of this app.
-
----
-
-We invite you to explore the app, test its features, and delve into the code to see the principles of Clean Architecture and SOLID in action. Enjoy navigating through the application!
