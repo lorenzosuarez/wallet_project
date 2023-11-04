@@ -1,14 +1,50 @@
 <resources>
     <string name="app_name">StoriChallenge</string>
+    <string name="transactions">Transactions</string>
+    <string name="account_balance">Account balance</string>
+    <string name="transaction_details">Transaction details</string>
     <string name="transaction_detail">Transaction detail</string>
     <string name="transaction_number">Transaction number</string>
     <string name="type_transaction_sent_short">Sent</string>
     <string name="type_transaction_sent">You sent</string>
     <string name="type_transaction_received">You received</string>
     <string name="type_transaction_received_short">Received</string>
+    <string name="type_transaction_moved">You moved</string>
+    <string name="type_transaction_moved_short">Moved</string>
+    <string name="account_created">Your account has been created</string>
+    <string name="log_out_message_title">Do you want logout?</string>
+    <string name="log_out_message_subtitle">You will be returned to the login screen</string>
+    <string name="success">Success!</string>
+
+
+    <!--    screen title     -->
     <string name="register_title">Sign up</string>
     <string name="home_title">Home</string>
     <string name="details_title">Details</string>
+    <!--    endregion   -->
+
+    <!--    error messages     -->
     <string name="error_register">Register unsuccessful. Please try again.</string>
     <string name="error_login">Login unsuccessful. Please try again.</string>
+    <string name="error_password_input">It must be a minimum of 6 characters.</string>
+    <!--    endregion   -->
+
+    <!--    buttons     -->
+    <string name="button_login">Login</string>
+    <string name="button_register">Register</string>
+    <string name="button_log_out">Log out</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="button_continue">Continue</string>
+    <!--    endregion   -->
+
+    <!--    login - register   -->
+    <string name="fill_input_subtitle">Please fill the input below here</string>
+    <string name="you_are_new">You are new</string>
+    <string name="id_photo">ID photo</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="name">Name</string>
+    <string name="last_name">Last name</string>
+    <string name="keep_me_sign_in">keep me sign ine</string>
+    <!--    endregion   -->
 </resources>

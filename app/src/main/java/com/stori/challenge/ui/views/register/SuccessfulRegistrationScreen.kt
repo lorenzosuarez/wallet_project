@@ -19,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -61,7 +62,7 @@ fun SuccessfulRegistrationScreen(navController: NavHostController) {
                     contentDescription = "done",
                 )
                 Text(
-                    text = "Success!",
+                    text = stringResource(id = R.string.success),
                     maxLines = 1,
                     style = MaterialTheme.typography.labelLarge.copy(
                         fontSize = 32.sp,
@@ -70,7 +71,7 @@ fun SuccessfulRegistrationScreen(navController: NavHostController) {
                     ),
                 )
                 Text(
-                    text = "Your account has been created",
+                    text = stringResource(id = R.string.account_created),
                     maxLines = 1,
                     style = MaterialTheme.typography.labelLarge.copy(
                         fontSize = 16.sp,
@@ -85,7 +86,7 @@ fun SuccessfulRegistrationScreen(navController: NavHostController) {
             modifier = Modifier
                 .fillMaxWidth(0.85f)
                 .padding(vertical = dimensions.paddingLarge),
-            buttonText = "Continue",
+            buttonText = stringResource(id = R.string.button_continue),
             imageVector = Icons.AutoMirrored.Rounded.ArrowForward,
         ) {
             navController.safeNavigate(

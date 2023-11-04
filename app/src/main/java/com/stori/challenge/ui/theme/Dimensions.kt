@@ -23,7 +23,7 @@ data class Dimensions(
     val notRounded: Dp = 0.dp,
     val paddingLarge: Dp = 22.dp,
     val spaceLarge: Dp = 32.dp,
-    val spaceExtraLarge: Dp = 66.dp,
+    val spaceExtraLarge: Dp = 75.dp,
     val spaceXXLarge: Dp = 128.dp,
     val spaceXXXLarge: Dp = 256.dp,
 )

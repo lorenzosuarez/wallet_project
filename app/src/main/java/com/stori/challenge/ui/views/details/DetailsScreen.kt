@@ -60,7 +60,7 @@ fun DetailsScreen(
             horizontalArrangement = Arrangement.Start,
         ) {
             Text(
-                text = "Transaction details",
+                text = stringResource(id = R.string.transaction_detail),
                 maxLines = 1,
                 style = MaterialTheme.typography.bodyMedium.copy(
                     fontSize = 22.sp,
@@ -85,7 +85,8 @@ fun DetailsScreen(
                     text = stringResource(
                         id = when (t.transactionType) {
                             1 -> R.string.type_transaction_sent
-                            else -> R.string.type_transaction_received
+                            0 -> R.string.type_transaction_received
+                            else -> R.string.type_transaction_moved
                         },
                     ),
                     maxLines = 1,

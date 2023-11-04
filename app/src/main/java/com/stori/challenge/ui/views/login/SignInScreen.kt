@@ -30,6 +30,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -129,7 +130,7 @@ fun SignInScreen(
         Text(
             modifier = Modifier.fillMaxWidth(0.85f),
             textAlign = TextAlign.Start,
-            text = "Login",
+            text = stringResource(id = R.string.button_login),
             maxLines = 1,
             style = MaterialTheme.typography.titleLarge.copy(
                 fontSize = 25.sp,
@@ -145,7 +146,7 @@ fun SignInScreen(
                     LoginEvent.EmailChanged(email = newValue),
                 )
             },
-            placeholderText = "Email",
+            placeholderText = stringResource(id = R.string.email),
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Email,
                 imeAction = ImeAction.Next,
@@ -163,13 +164,13 @@ fun SignInScreen(
                     ),
                 )
             },
-            placeholderText = "Password",
+            placeholderText = stringResource(id = R.string.password),
             visualTransformation = if (isVisiblePassword) VisualTransformation.None else PasswordVisualTransformation(),
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Password,
                 imeAction = ImeAction.Done,
             ),
-            errorMessage = "Debe tener un minimo de 6",
+            errorMessage = stringResource(id = R.string.error_password_input),
             trailingIcon = {
                 IconToggleButton(
                     checked = isVisiblePassword,
@@ -202,7 +203,7 @@ fun SignInScreen(
             )
             Spacer(Modifier.width(dimensions.spaceXXSmall))
             Text(
-                text = "keep me sign in",
+                text = stringResource(id = R.string.keep_me_sign_in),
                 style = MaterialTheme.typography.labelLarge,
             )
         }
@@ -211,7 +212,7 @@ fun SignInScreen(
             modifier = Modifier
                 .fillMaxWidth(0.85f),
             isLoading = isLoading,
-            buttonText = "Sign in",
+            buttonText = stringResource(id = R.string.button_login),
             onClick = loginViewModel::login,
         )
 
@@ -221,7 +222,7 @@ fun SignInScreen(
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Text(
-                text = "You are new?",
+                text = stringResource(id = R.string.you_are_new),
                 style = MaterialTheme.typography.labelLarge,
             )
 
@@ -233,7 +234,7 @@ fun SignInScreen(
                 }.debounceClick(),
             ) {
                 Text(
-                    text = "Sign up",
+                    text = stringResource(id = R.string.register_title),
                     style = MaterialTheme.typography.labelLarge,
                     color = MaterialTheme.colorScheme.outline,
                     textDecoration = TextDecoration.Underline,

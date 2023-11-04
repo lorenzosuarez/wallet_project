@@ -10,6 +10,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import com.stori.challenge.R
 
 @Composable
 fun LogoutComponent(
@@ -23,12 +25,12 @@ fun LogoutComponent(
         verticalArrangement = Arrangement.Center,
     ) {
         Text(
-            text = "Do you want logout?",
+            text = stringResource(id = R.string.log_out_message_title),
             style = MaterialTheme.typography.labelLarge,
         )
 
         Button(onClick = onClick) {
-            Text(text = "Logout")
+            Text(text = stringResource(id = R.string.button_log_out))
         }
     }
 }

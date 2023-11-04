@@ -16,7 +16,6 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconToggleButton
 import androidx.compose.material3.MaterialTheme
@@ -28,6 +27,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
@@ -127,7 +127,7 @@ fun SignUpScreen(
                 .fillMaxWidth(0.85f)
                 .padding(vertical = dimensions.paddingLarge),
             textAlign = TextAlign.Start,
-            text = "Please fill the input below here",
+            text = stringResource(id = R.string.fill_input_subtitle),
             maxLines = 1,
             style = MaterialTheme.typography.labelLarge.copy(
                 fontSize = 22.sp,
@@ -140,7 +140,7 @@ fun SignUpScreen(
                 .fillMaxWidth(0.85f)
                 .wrapContentHeight(),
             state = documentState,
-            text = "Foto de ID",
+            text = stringResource(id = R.string.id_photo),
         ) {
             if (!cameraPermissionState.status.isGranted) {
                 cameraPermissionState.launchPermissionRequest()
@@ -162,7 +162,7 @@ fun SignUpScreen(
                 keyboardType = KeyboardType.Email,
                 imeAction = ImeAction.Next,
             ),
-            placeholderText = "Email",
+            placeholderText = stringResource(id = R.string.email),
         )
 
         CustomTextField(
@@ -176,7 +176,7 @@ fun SignUpScreen(
                     ),
                 )
             },
-            placeholderText = "Password",
+            placeholderText = stringResource(id = R.string.password),
             visualTransformation = if (isVisiblePassword) VisualTransformation.None else PasswordVisualTransformation(),
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Password,
@@ -199,7 +199,7 @@ fun SignUpScreen(
                     )
                 }
             },
-            errorMessage = "Debe tener un minimo de 6",
+            errorMessage = stringResource(id = R.string.error_password_input),
         )
 
         CustomTextField(
@@ -211,7 +211,7 @@ fun SignUpScreen(
                     RegisterEvent.NameChanged(name = newValue),
                 )
             },
-            placeholderText = "Name",
+            placeholderText = stringResource(id = R.string.name),
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Text,
                 imeAction = ImeAction.Next,
@@ -228,7 +228,7 @@ fun SignUpScreen(
                     RegisterEvent.LastNameChanged(lastName = newValue),
                 )
             },
-            placeholderText = "Lastname",
+            placeholderText = stringResource(id = R.string.last_name),
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Text,
                 imeAction = ImeAction.Done,
@@ -241,7 +241,7 @@ fun SignUpScreen(
         CustomButton(
             modifier = Modifier.fillMaxWidth(0.85f),
             isLoading = isLoading,
-            buttonText = "Register",
+            buttonText = stringResource(id = R.string.button_register),
             onClick = registerViewModel::register,
         )
     }

@@ -44,7 +44,7 @@ import com.stori.challenge.ui.theme.StoriTheme
 @Composable
 fun TransactionItem(
     modifier: Modifier = Modifier,
-    transactionType: String,
+    transactionType: String?,
     transactionAmount: String,
     @DrawableRes transactionTypeIcon: Int,
     onClick: () -> Unit,
@@ -84,16 +84,18 @@ fun TransactionItem(
                     horizontalAlignment = Alignment.Start,
                     verticalArrangement = Arrangement.spacedBy(dimens.spaceXSmall),
                 ) {
+                    transactionType?.let { type ->
+                        Text(
+                            text = type,
+                            style = MaterialTheme.typography.labelMedium.copy(
+                                fontWeight = FontWeight.Normal,
+                                fontSize = 10.sp,
+                                letterSpacing = 2.sp,
+                            ),
+                        )
+                    }
                     Text(
-                        text = transactionType,
-                        style = MaterialTheme.typography.labelMedium.copy(
-                            fontWeight = FontWeight.Normal,
-                            fontSize = 10.sp,
-                            letterSpacing = 2.sp,
-                        ),
-                    )
-                    Text(
-                        text = "$$transactionAmount",
+                        text = transactionAmount,
                         style = MaterialTheme.typography.labelLarge.copy(
                             fontWeight = FontWeight.SemiBold,
                             letterSpacing = 1.0.sp,

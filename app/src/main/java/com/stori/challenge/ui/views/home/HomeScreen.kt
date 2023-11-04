@@ -36,7 +36,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.stori.challenge.R
 import com.stori.challenge.ui.components.AccountBalanceCard
-import com.stori.challenge.ui.components.LogoutAlertDialog
+import com.stori.challenge.ui.components.AlertDialog
 import com.stori.challenge.ui.components.ShimmerContent
 import com.stori.challenge.ui.components.TransactionItem
 import com.stori.challenge.ui.events.MainEvent
@@ -48,6 +48,8 @@ import com.stori.challenge.ui.viewmodels.MainViewModel
 import com.stori.challenge.util.extensions.debounceClick
 import com.stori.challenge.util.extensions.safeNavigate
 import com.stori.challenge.util.extensions.toTwoDecimals
+
+private const val CURRENCY_CODE = "USD"
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
@@ -81,11 +83,13 @@ fun HomeScreen(
     }
 
     if (openLogoutAlertDialog) {
-        LogoutAlertDialog(
-            onDismissRequest = dismissLogoutAlertDialog,
+        AlertDialog(
+            confirmButtonText = stringResource(id = R.string.button_log_out),
+            dismissButtonText = stringResource(id = R.string.button_cancel),
+            dialogTitle = stringResource(id = R.string.button_log_out),
+            dialogText = stringResource(id = R.string.log_out_message_title),
             onConfirmation = mainViewModel::signOut,
-            dialogTitle = "Log out",
-            dialogText = "You will be returned to the login screen",
+            onDismissRequest = dismissLogoutAlertDialog,
         )
     }
 
@@ -133,7 +137,7 @@ fun HomeScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .alpha(if (isLoading) 0f else 1f),
-                    title = "Account balance",
+                    title = stringResource(id = R.string.account_balance),
                     currencyFlag = R.drawable.ic_usa_flag,
                     accountBalance = {
                         ShimmerContent(
@@ -142,7 +146,7 @@ fun HomeScreen(
                         ) {
                             Text(
                                 modifier = Modifier.alpha(if (isLoading) 0f else 1f),
-                                text = "${userTransactionData?.amount?.toTwoDecimals() ?: 00.00} USD",
+                                text = "${userTransactionData?.amount?.toTwoDecimals() ?: 00.00} $CURRENCY_CODE",
                                 style = MaterialTheme.typography.labelLarge.copy(
                                     fontWeight = FontWeight.Bold,
                                     fontSize = 25.sp,
@@ -167,7 +171,7 @@ fun HomeScreen(
                 horizontalArrangement = Arrangement.Start,
             ) {
                 Text(
-                    text = "Transactions",
+                    text = stringResource(id = R.string.transactions),
                     style = MaterialTheme.typography.labelLarge,
                 )
             }
@@ -204,14 +208,20 @@ fun HomeScreen(
                             with(item) {
                                 TransactionItem(
                                     modifier = Modifier.fillMaxWidth(),
-                                    transactionType = stringResource(
-                                        id = when (transactionType) {
-                                            1 -> R.string.type_transaction_sent_short
-                                            else -> R.string.type_transaction_received_short
-                                        },
-                                    ).uppercase(),
-                                    transactionAmount = transactionAmount,
-                                    transactionTypeIcon = if (transactionNumber == 1) R.drawable.ic_txn_out else R.drawable.ic_txn_in,
+                                    transactionType = when (transactionType) {
+                                        1 -> stringResource(id = R.string.type_transaction_sent_short)
+                                        0 -> stringResource(id = R.string.type_transaction_received_short)
+                                        else -> null
+                                    }?.uppercase(),
+                                    transactionAmount = "${when (transactionType) {
+                                        0 -> "+"
+                                        else -> ""
+                                    }}$transactionAmount $CURRENCY_CODE",
+                                    transactionTypeIcon = when (transactionType) {
+                                        0 -> R.drawable.ic_txn_in
+                                        1 -> R.drawable.ic_txn_out
+                                        else -> R.drawable.ic_receipt
+                                    },
                                     onClick = {
                                         synchronized(this) {
                                             navController.safeNavigate(
