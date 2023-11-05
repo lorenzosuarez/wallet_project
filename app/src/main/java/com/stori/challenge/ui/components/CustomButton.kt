@@ -15,10 +15,24 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.stori.challenge.ui.theme.LocalDim
+import com.stori.challenge.ui.theme.StoriTheme
 
+/**
+ * A custom button that can show a loading indicator and an optional icon alongside the text.
+ *
+ * @param modifier The modifier to be applied to the Button.
+ * @param isLoading The Boolean flag to show a loading indicator instead of the button text and icon.
+ * @param buttonText The text to display on the button.
+ * @param imageVector The optional ImageVector to display an icon alongside the text.
+ * @param onClick The lambda to be invoked when the button is pressed.
+ *
+ * @sample PreviewCustomButton
+ * @author Lorenzo Suarez
+ */
 @Composable
 fun CustomButton(
     modifier: Modifier = Modifier,
@@ -61,5 +75,16 @@ fun CustomButton(
                 }
             }
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewCustomButton() {
+    StoriTheme {
+        CustomButton(
+            buttonText = "Click Me",
+            onClick = {},
+        )
     }
 }

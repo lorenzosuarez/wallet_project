@@ -19,11 +19,30 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.stori.challenge.R
 import com.stori.challenge.ui.states.UiState
 import com.stori.challenge.ui.theme.LocalDim
+import com.stori.challenge.ui.theme.StoriTheme
 
+/**
+ * A custom TextField with an optional trailing icon that changes based on the UI state.
+ * It can display an error message underneath the TextField when the state is an error.
+ *
+ * @param modifier Modifier to be applied to the TextField.
+ * @param value The current text to be displayed in the TextField.
+ * @param state The UI state that the TextField reflects.
+ * @param errorMessage The error message to display when the state is [UiState.Error].
+ * @param onValueChange Called when the input service updates the text.
+ * @param placeholderText The text to be displayed when the input is empty.
+ * @param visualTransformation The VisualTransformation to apply to the text input.
+ * @param keyboardOptions Configuration options for the software keyboard.
+ * @param trailingIcon The optional trailing composable to display inside the TextField.
+ *
+ * @sample PreviewCustomTextField
+ * @author Lorenzo Suarez
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CustomTextField(
@@ -58,6 +77,7 @@ fun CustomTextField(
                                 painter = painterResource(id = R.drawable.ic_circle_checked),
                                 contentDescription = state.name,
                             )
+
                             UiState.Error -> Icon(
                                 modifier = Modifier.size(25.dp),
                                 painter = painterResource(id = R.drawable.ic_warning),
@@ -95,5 +115,18 @@ fun CustomTextField(
                 color = MaterialTheme.colorScheme.error,
             )
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewCustomTextField() {
+    StoriTheme {
+        CustomTextField(
+            value = "Sample Text",
+            state = UiState.Idle,
+            errorMessage = "Error message",
+            onValueChange = {},
+        )
     }
 }

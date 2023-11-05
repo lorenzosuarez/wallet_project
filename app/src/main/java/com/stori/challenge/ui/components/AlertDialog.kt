@@ -6,6 +6,22 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.tooling.preview.Preview
+import com.stori.challenge.ui.theme.StoriTheme
+
+/**
+ * Displays an AlertDialog with customizable title, text, and buttons for confirmation and dismissal.
+ *
+ * @param dialogTitle The text to be used as the title of the alert dialog.
+ * @param dialogText The text to be used for the message of the alert dialog.
+ * @param confirmButtonText The text to be used on the confirmation button.
+ * @param dismissButtonText The text to be used on the dismiss button.
+ * @param onConfirmation The lambda to be invoked when the confirmation button is pressed.
+ * @param onDismissRequest The lambda to be invoked when the dialog is dismissed.
+ *
+ * @sample PreviewAlertDialog
+ * @author Lorenzo Suarez
+ */
 
 @Composable
 fun AlertDialog(
@@ -45,4 +61,19 @@ fun AlertDialog(
             )
         },
     )
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewAlertDialog() {
+    StoriTheme {
+        AlertDialog(
+            dialogTitle = "Sample Title",
+            dialogText = "This is a sample alert dialog showing how it will look.",
+            confirmButtonText = "Confirm",
+            dismissButtonText = "Dismiss",
+            onConfirmation = {},
+            onDismissRequest = {},
+        )
+    }
 }

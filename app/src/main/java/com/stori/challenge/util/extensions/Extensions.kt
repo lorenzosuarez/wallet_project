@@ -14,6 +14,12 @@ import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
+/**
+ * Awaits the result of a Task with a coroutine suspension, resuming when the Task is complete.
+ *
+ * @return The result of the Task if successful, null otherwise.
+ * @throws RuntimeException If the Task fails with no specific exception.
+ */
 suspend fun <T> Task<T>.await(): T? = suspendCoroutine { continuation ->
     addOnCompleteListener { task ->
         if (task.isSuccessful) {
@@ -28,6 +34,16 @@ suspend fun <T> Task<T>.await(): T? = suspendCoroutine { continuation ->
 
 typealias ArgKeyAndValue = Pair<String, String>?
 
+/**
+ * Safely navigates to the specified route with the NavController, using the provided arguments and navigation options.
+ * Navigation will fail silently if the route or arguments are invalid.
+ *
+ * @param route The route to navigate to.
+ * @param argument Optional key and value to be replaced in the route string.
+ * @param popUpToRoute The route to pop up to before navigation, null by default.
+ * @param inclusive Boolean flag to indicate if the popUpToRoute should be inclusive, defaults to true.
+ * @param builder Lambda to configure additional options for navigation.
+ */
 fun NavController.safeNavigate(
     route: String,
     argument: ArgKeyAndValue = null,
@@ -53,6 +69,12 @@ fun NavController.safeNavigate(
     }
 }
 
+/**
+ * Wraps an onClick action with a debounce period. Actions triggered in succession within the wait period will be ignored.
+ *
+ * @param waitMillis The time to wait before registering a new click in milliseconds. Defaults to 700ms.
+ * @return A debounced version of the onClick lambda.
+ */
 @Composable
 fun (() -> Unit).debounceClick(waitMillis: Long = 700L): () -> Unit {
     var lastClick by remember { mutableLongStateOf(0L) }
@@ -63,6 +85,12 @@ fun (() -> Unit).debounceClick(waitMillis: Long = 700L): () -> Unit {
         }
     }
 }
+
+/**
+ * Formats the [Double] to a [String] representation with two decimal places.
+ *
+ * @return A string representation of the [Double] with two decimal places.
+ */
 fun Double.toTwoDecimals(): String = String.format("%.2f", this)
 
 

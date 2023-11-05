@@ -16,10 +16,25 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.stori.challenge.R
 import com.stori.challenge.ui.states.UiState
 import com.stori.challenge.ui.theme.LocalDim
+import com.stori.challenge.ui.theme.StoriTheme
+
+/**
+ * A card component that displays text with an accompanying icon, which reflects the UI state.
+ * It changes the border color based on whether there is an error or not.
+ *
+ * @param modifier Modifier to be applied to the card.
+ * @param text The text to display inside the card.
+ * @param state The UI state that can alter the appearance of the card.
+ * @param onClick Action to be performed when the card is clicked.
+ *
+ * @sample PreviewDocumentCard
+ * @author Lorenzo Suarez
+ */
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -87,5 +102,18 @@ fun DocumentCard(
                 else -> Unit
             }
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewDocumentCard() {
+    StoriTheme {
+        DocumentCard(
+            modifier = Modifier.padding(8.dp),
+            text = "Personal Document",
+            state = UiState.Idle,
+            onClick = {},
+        )
     }
 }

@@ -39,13 +39,13 @@ fun SuccessfulRegistrationScreen(navController: NavHostController) {
     val uid: String = remember(Unit) {
         navController.currentBackStackEntry?.arguments?.getString(UID).orEmpty()
     }
-    val preloaderLottieComposition by rememberLottieComposition(
+    val doneLottieComposition by rememberLottieComposition(
         LottieCompositionSpec.RawRes(
             R.raw.done_animation,
         ),
     )
-    val preloaderProgress by animateLottieCompositionAsState(
-        preloaderLottieComposition,
+    val doneLottie by animateLottieCompositionAsState(
+        doneLottieComposition,
         iterations = 1,
         isPlaying = true,
     )
@@ -88,8 +88,8 @@ fun SuccessfulRegistrationScreen(navController: NavHostController) {
             contentAlignment = Alignment.Center,
         ) {
             LottieAnimation(
-                composition = preloaderLottieComposition,
-                progress = preloaderProgress,
+                composition = doneLottieComposition,
+                progress = doneLottie,
             )
         }
         CustomButton(

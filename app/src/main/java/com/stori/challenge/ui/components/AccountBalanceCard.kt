@@ -16,8 +16,22 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
+import com.stori.challenge.R
 import com.stori.challenge.ui.theme.LocalDim
+import com.stori.challenge.ui.theme.StoriTheme
 
+/**
+ * A card component that displays an account balance with a currency flag.
+ *
+ * @param modifier Modifier to be applied to the card.
+ * @param title The title of the card, usually displayed as "Account Balance".
+ * @param currencyFlag A drawable resource identifier for the currency flag image.
+ * @param accountBalance A composable lambda that provides the content displaying the account balance.
+ *
+ * @author Lorenzo Suarez
+ * @sample PreviewAccountBalanceCard
+ */
 @Composable
 fun AccountBalanceCard(
     modifier: Modifier = Modifier,
@@ -56,5 +70,19 @@ fun AccountBalanceCard(
                 accountBalance()
             }
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewAccountBalanceCard() {
+    StoriTheme {
+        AccountBalanceCard(
+            title = "Account Balance",
+            currencyFlag = R.drawable.ic_usa_flag,
+            accountBalance = {
+                Text(text = "$1,234.56 USD")
+            },
+        )
     }
 }

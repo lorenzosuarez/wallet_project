@@ -16,11 +16,22 @@ import com.stori.challenge.util.constants.FirestoreUserConstants.FIELD_LAST_NAME
 import com.stori.challenge.util.constants.FirestoreUserConstants.FIELD_NAME
 import com.stori.challenge.util.constants.FirestoreUserConstants.FIELD_UID
 
+/**
+ * Maps an [AuthResult] to a [Result] containing a [User].
+ * If the [AuthResult] does not contain a user, it returns a [Result.failure] with an [FirebaseAuthException].
+ *
+ * @return A [Result] wrapping a [User] on success or an [FirebaseAuthException] on failure.
+ */
 fun AuthResult.toUserResult(): Result<User> {
     return this.user?.toDomainUser()?.let { Result.success(it) }
         ?: Result.failure(FirebaseAuthException("Auth error", "Failed to get Firebase user"))
 }
 
+/**
+ * Converts a [FirebaseUser] to a domain [User] object.
+ *
+ * @return A domain [User] object.
+ */
 fun FirebaseUser.toDomainUser() = User(
     uid = this.uid,
     email = this.email ?: "",
@@ -29,6 +40,12 @@ fun FirebaseUser.toDomainUser() = User(
     documentImageUrl = "",
 )
 
+/**
+ * Converts a [DocumentSnapshot] to a domain [User] object. Throws [UserNotFoundException] if the snapshot does not exist.
+ *
+ * @return A domain [User] object.
+ * @throws UserNotFoundException If the [DocumentSnapshot] does not exist.
+ */
 fun DocumentSnapshot.toUser(): User {
     return try {
         if (exists()) {
@@ -47,6 +64,11 @@ fun DocumentSnapshot.toUser(): User {
     }
 }
 
+/**
+ * Converts a [DocumentSnapshot] to a [TransactionData] object if the snapshot exists, null otherwise.
+ *
+ * @return A [TransactionData] object or null if the snapshot does not exist.
+ */
 fun DocumentSnapshot.toUserTransactionData(): TransactionData? {
     return if (exists()) {
         val transactionsData = (get("transactions") as? List<Map<String, Any>>) ?: emptyList()
@@ -66,6 +88,11 @@ fun DocumentSnapshot.toUserTransactionData(): TransactionData? {
     }
 }
 
+/**
+ * Converts a [TransactionData] to a [UserTransactionData] object.
+ *
+ * @return A [UserTransactionData] object.
+ */
 fun TransactionData.toUserTransactionData(): UserTransactionData {
     return UserTransactionData(
         amount = this.amount,
@@ -75,6 +102,11 @@ fun TransactionData.toUserTransactionData(): UserTransactionData {
     )
 }
 
+/**
+ * Converts a [Transaction] to a [UserTransaction] object.
+ *
+ * @return A [UserTransaction] object.
+ */
 private fun Transaction.toUserTransaction(): UserTransaction {
     return UserTransaction(
         transactionAmount = this.transactionAmount,
@@ -84,6 +116,11 @@ private fun Transaction.toUserTransaction(): UserTransaction {
     )
 }
 
+/**
+ * Converts a domain [User] to a [UserProfile] data model.
+ *
+ * @return A [UserProfile] data model object.
+ */
 fun User.toUserProfile(): UserProfile {
     return UserProfile(
         uid = this.uid,
@@ -94,4 +131,9 @@ fun User.toUserProfile(): UserProfile {
     )
 }
 
+/**
+ * Exception to be thrown when a user is not found within a Firebase [DocumentSnapshot].
+ *
+ * @param message The detail message string of this throwable.
+ */
 class UserNotFoundException(message: String) : Exception(message)

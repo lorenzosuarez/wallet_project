@@ -7,6 +7,8 @@ import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -15,7 +17,17 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.stori.challenge.ui.theme.StoriTheme
 
+/**
+ * Creates a shimmer effect brush that can be applied to composables.
+ *
+ * @param showShimmer A flag to control the visibility of the shimmer effect.
+ * @param targetValue The target value of the animation which determines the width of the shimmer effect.
+ * @return A [Brush] that gives a shimmer effect.
+ */
 @Composable
 fun shimmerBrush(showShimmer: Boolean = true, targetValue: Float = 1000f): Brush {
     return if (showShimmer) {
@@ -49,6 +61,16 @@ fun shimmerBrush(showShimmer: Boolean = true, targetValue: Float = 1000f): Brush
     }
 }
 
+/**
+ * Wraps content with a shimmer effect overlay when `showShimmer` is true.
+ *
+ * @param modifier Modifier to be applied to the shimmer container.
+ * @param showShimmer A flag to control the visibility of the shimmer effect.
+ * @param shape The shape of the shimmer overlay.
+ * @param content A composable that will be the underlying content over which the shimmer effect is shown.
+ * @author Lorenzo Suarez
+ */
+
 @Composable
 fun ShimmerContent(
     modifier: Modifier = Modifier,
@@ -65,6 +87,20 @@ fun ShimmerContent(
                     .clip(shape)
                     .background(shimmerBrush(targetValue = 1300f, showShimmer = true)),
             )
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewShimmerContent() {
+    StoriTheme {
+        ShimmerContent(
+            modifier = Modifier.size(200.dp),
+            showShimmer = true,
+            shape = RectangleShape,
+        ) {
+            Box(modifier = Modifier.background(Color.Gray).fillMaxSize())
         }
     }
 }

@@ -30,10 +30,15 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.airbnb.lottie.compose.LottieAnimation
+import com.airbnb.lottie.compose.LottieCompositionSpec
+import com.airbnb.lottie.compose.animateLottieCompositionAsState
+import com.airbnb.lottie.compose.rememberLottieComposition
 import com.stori.challenge.R
 import com.stori.challenge.ui.components.AccountBalanceCard
 import com.stori.challenge.ui.components.AlertDialog
@@ -69,8 +74,21 @@ fun HomeScreen(
     val userTransactionData = userProfileState.userTransactionData
     val isLoading = userProfileState.isLoading
     val listState = rememberLazyListState()
-    val pullRefreshState =
-        rememberPullRefreshState(isLoading, { mainViewModel.loadUserProfile(uid = uid) })
+    val pullRefreshState = rememberPullRefreshState(
+        refreshing = isLoading,
+        onRefresh = { mainViewModel.loadUserProfile(uid = uid) },
+    )
+    val noResultLottieComposition by rememberLottieComposition(
+        LottieCompositionSpec.RawRes(
+            R.raw.no_results,
+        ),
+    )
+    val noResultLottie by animateLottieCompositionAsState(
+        noResultLottieComposition,
+        iterations = 1,
+        isPlaying = true,
+    )
+    val emptyTransactions = !isLoading && userTransactionData?.transactions.isNullOrEmpty()
 
     LaunchedEffect(eventFlow) {
         eventFlow.collect { event ->
@@ -213,10 +231,12 @@ fun HomeScreen(
                                         0 -> stringResource(id = R.string.type_transaction_received_short)
                                         else -> null
                                     }?.uppercase(),
-                                    transactionAmount = "${when (transactionType) {
-                                        0 -> "+"
-                                        else -> ""
-                                    }}$transactionAmount $CURRENCY_CODE",
+                                    transactionAmount = "${
+                                        when (transactionType) {
+                                            0 -> "+"
+                                            else -> ""
+                                        }
+                                    }$transactionAmount $CURRENCY_CODE",
                                     transactionTypeIcon = when (transactionType) {
                                         0 -> R.drawable.ic_txn_in
                                         1 -> R.drawable.ic_txn_out
@@ -233,6 +253,21 @@ fun HomeScreen(
                                 )
                             }
                         }
+                    }
+                }
+                if (emptyTransactions) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .fillMaxWidth(0.8f),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        LottieAnimation(
+                            modifier = Modifier.fillMaxSize(0.65f),
+                            composition = noResultLottieComposition,
+                            progress = noResultLottie,
+                            contentScale = ContentScale.Fit,
+                        )
                     }
                 }
             }

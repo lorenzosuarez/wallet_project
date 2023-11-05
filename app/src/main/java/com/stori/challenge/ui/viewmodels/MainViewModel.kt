@@ -59,7 +59,7 @@ class MainViewModel(
             val userProfile = async { getRemoteUserUseCase.invoke(uid = uid) }
             val transactions = async { getTransactionsUseCase.invoke(uid = uid) }
 
-            delay(3000)
+            delay(2000)
 
             _userProfileState.value = UserProfileState(
                 userProfile = userProfile.await().getOrNull()?.toUserProfile(),
@@ -71,7 +71,7 @@ class MainViewModel(
 
     init {
         authenticationState.onEach { state ->
-            when(state) {
+            when (state) {
                 is AuthenticationState.Authenticated -> { loadUserProfile(state.uid) }
                 else -> Unit
             }
