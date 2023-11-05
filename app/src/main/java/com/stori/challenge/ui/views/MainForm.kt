@@ -36,6 +36,7 @@ import com.stori.challenge.ui.navigation.Screen.Splash
 import com.stori.challenge.ui.navigation.Screen.Success
 import com.stori.challenge.ui.navigation.UID
 import com.stori.challenge.ui.theme.LocalDim
+import com.stori.challenge.ui.theme.successColor
 import com.stori.challenge.ui.viewmodels.MainViewModel
 import com.stori.challenge.util.extensions.safeNavigate
 import kotlinx.coroutines.launch
@@ -84,6 +85,8 @@ fun MainForm(
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.route) {
                 Login.route -> updateStatusBarColor(colors.primary)
+                Success.route -> updateStatusBarColor(successColor)
+                Splash.route -> updateStatusBarColor(colors.secondary)
                 else -> updateStatusBarColor(Color.Transparent)
             }
         }

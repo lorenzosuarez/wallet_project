@@ -30,7 +30,7 @@ import com.stori.challenge.ui.components.CustomButton
 import com.stori.challenge.ui.navigation.Screen
 import com.stori.challenge.ui.navigation.UID
 import com.stori.challenge.ui.theme.LocalDim
-import com.stori.challenge.ui.theme.storiDarkInverseSurface
+import com.stori.challenge.ui.theme.successColor
 import com.stori.challenge.util.extensions.safeNavigate
 
 @Composable
@@ -53,7 +53,7 @@ fun SuccessfulRegistrationScreen(navController: NavHostController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(storiDarkInverseSurface),
+            .background(successColor),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Column(
