@@ -83,14 +83,15 @@ This project is built using a myriad of modern libraries and tools. Below is a l
 | Image 1 | Image 2 | Image 3 |
 |---------|---------|---------|
 | ![screenshot_splash](https://github.com/lorenzosuarez/Stori-Challenge/assets/55887438/b7055f37-43e6-444f-9c0e-788dcfa67de8) | ![screenshot_login](https://github.com/lorenzosuarez/Stori-Challenge/assets/55887438/31eba34e-1030-453f-866e-1d3a7f56a0f4) | ![screenshot_register](https://github.com/lorenzosuarez/Stori-Challenge/assets/55887438/26e2821e-3951-4423-a8c6-a677e839a3d2) |
-
 | Image 4 | Image 5 | Image 6 |
-| ![screenshot_success](https://github.com/lorenzosuarez/Stori-Challenge/assets/55887438/05abaeee-e199-4b0b-a99c-3929ce86f32c)  ![screenshot_home](https://github.com/lorenzosuarez/Stori-Challenge/assets/55887438/51194b64-02b5-481f-adee-c0f2fc9c5687) | ![screenshot_details](https://github.com/lorenzosuarez/Stori-Challenge/assets/55887438/6416eb17-033e-4b40-8d6a-178aec25ccfb) |
+| ![screenshot_success](https://github.com/lorenzosuarez/Stori-Challenge/assets/55887438/05abaeee-e199-4b0b-a99c-3929ce86f32c) | ![screenshot_home](https://github.com/lorenzosuarez/Stori-Challenge/assets/55887438/51194b64-02b5-481f-adee-c0f2fc9c5687) | ![screenshot_details](https://github.com/lorenzosuarez/Stori-Challenge/assets/55887438/6416eb17-033e-4b40-8d6a-178aec25ccfb) |
 
 ## 🎥 Demo
+
 | Light demo | Dark demo |
-|---------|---------|---------|
-| ![demo_recording](https://github.com/lorenzosuarez/Stori-Challenge/assets/55887438/cdda89d4-80f3-41d5-9c50-9923d512e5b8) | ![demo_recording_dark](https://github.com/lorenzosuarez/Stori-Challenge/assets/55887438/77e9a1b3-ad57-4640-a0c8-1598d01d5191) | 
+|------------|-----------|
+| <img src="https://github.com/lorenzosuarez/Stori-Challenge/assets/55887438/cdda89d4-80f3-41d5-9c50-9923d512e5b8" width="450"> | <img src="https://github.com/lorenzosuarez/Stori-Challenge/assets/55887438/77e9a1b3-ad57-4640-a0c8-1598d01d5191" width="450"> |
+
 
 
 ## License 📄
