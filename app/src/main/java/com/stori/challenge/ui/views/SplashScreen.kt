@@ -22,7 +22,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.stori.challenge.R
-import kotlinx.coroutines.delay
 
 @Composable
 fun SplashScreen() {
@@ -37,7 +36,7 @@ fun SplashScreen() {
 
     Box(
         modifier = Modifier
-            .background(color = MaterialTheme.colorScheme.secondaryContainer)
+            .background(color = MaterialTheme.colorScheme.secondary)
             .scale(scale.value)
             .fillMaxSize(),
         contentAlignment = Alignment.Center,

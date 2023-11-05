@@ -1,11 +1,15 @@
 package com.stori.challenge.util.extensions
 
+import android.app.Activity
 import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
+import androidx.core.view.WindowCompat
 import androidx.navigation.NavController
 import androidx.navigation.NavOptionsBuilder
 import androidx.navigation.navOptions
@@ -93,5 +97,10 @@ fun (() -> Unit).debounceClick(waitMillis: Long = 700L): () -> Unit {
  */
 fun Double.toTwoDecimals(): String = String.format("%.2f", this)
 
-
-
+fun Activity.setStatusBarColor(color: Color, darkIcons: Boolean) {
+    window.statusBarColor = color.toArgb()
+    WindowCompat.getInsetsController(
+        window,
+        window.decorView,
+    ).isAppearanceLightStatusBars = darkIcons
+}

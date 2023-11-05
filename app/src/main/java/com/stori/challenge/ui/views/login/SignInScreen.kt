@@ -93,7 +93,7 @@ fun SignInScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(300.dp)
-                    .background(MaterialTheme.colorScheme.secondary),
+                    .background(MaterialTheme.colorScheme.primary),
                 contentAlignment = Alignment.Center,
             ) {
                 Image(
@@ -108,7 +108,7 @@ fun SignInScreen(
                     .fillMaxWidth()
                     .wrapContentHeight()
                     .offset(y = (-10).dp)
-                    .background(MaterialTheme.colorScheme.secondary),
+                    .background(MaterialTheme.colorScheme.primary),
             ) {
                 Box(
                     modifier = Modifier

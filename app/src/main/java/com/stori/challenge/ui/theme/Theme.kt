@@ -77,7 +77,7 @@ private val storiLightColorScheme = lightColorScheme(
 @Composable
 fun StoriTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit,
 ) {
     val storiColorScheme = when {

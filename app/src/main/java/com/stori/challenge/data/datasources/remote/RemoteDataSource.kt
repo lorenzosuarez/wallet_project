@@ -10,8 +10,8 @@ import com.google.firebase.ktx.Firebase
 import com.stori.challenge.domain.entities.AuthenticationState
 import com.stori.challenge.domain.entities.AuthenticationState.Authenticated
 import com.stori.challenge.domain.entities.AuthenticationState.Unauthenticated
-import com.stori.challenge.domain.entities.User
 import com.stori.challenge.domain.entities.TransactionData
+import com.stori.challenge.domain.entities.User
 import com.stori.challenge.util.constants.FirestoreUserConstants.COLLECTION_TRANSACTIONS
 import com.stori.challenge.util.constants.FirestoreUserConstants.COLLECTION_USERS
 import com.stori.challenge.util.constants.FirestoreUserConstants.PREFIX_ID_PICTURE
@@ -158,7 +158,7 @@ class RemoteDataSource {
 
     fun getAuthState(): Flow<AuthenticationState> {
         return callbackFlow {
-            delay(2500)
+            delay(2000)
             val listener = FirebaseAuth.AuthStateListener { auth ->
                 val state = auth.uid?.let { uid -> Authenticated(uid = uid) } ?: Unauthenticated
 
