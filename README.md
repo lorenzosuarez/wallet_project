@@ -4,12 +4,16 @@ Welcome to the repository for the Stori Challenge App. This project epitomizes m
 
 ## Project Overview 👀
 
-![Material3](https://img.shields.io/badge/Material3-1.0.0-alpha01-purple.svg?style=flat)
+![Material](https://img.shields.io/badge/Material-Design-blue.svg?style=flat)
 ![Jetpack Compose](https://img.shields.io/badge/Jetpack%20Compose-1.4.3-brightgreen.svg?style=flat)
 ![Kotlin](https://img.shields.io/badge/kotlin-1.7.10-blue.svg?logo=kotlin)
 ![Firebase](https://img.shields.io/badge/Firebase-BOM%2032.4.0-orange)
+![Koin](https://img.shields.io/badge/Koin-DI-green.svg?style=flat)
+![Coil](https://img.shields.io/badge/Coil-Image%20Loading-blue.svg?style=flat)
+![Lottie](https://img.shields.io/badge/Lottie-Animations-ff69b4.svg?style=flat)
 ![Clean Architecture](https://img.shields.io/badge/Clean%20Architecture-Enabled-green)
 ![SOLID](https://img.shields.io/badge/SOLID-Principles-blueviolet)
+
 
 ## Features ✨
 
