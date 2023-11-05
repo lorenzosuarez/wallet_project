@@ -90,8 +90,7 @@ This project is built using a myriad of modern libraries and tools. Below is a l
 
 | Light demo | Dark demo |
 |------------|-----------|
-| <img src="https://github.com/lorenzosuarez/Stori-Challenge/assets/55887438/cdda89d4-80f3-41d5-9c50-9923d512e5b8" width="450"> | <img src="https://github.com/lorenzosuarez/Stori-Challenge/assets/55887438/77e9a1b3-ad57-4640-a0c8-1598d01d5191" width="450"> |
-
+| <img src="https://github.com/lorenzosuarez/Stori-Challenge/assets/55887438/cdda89d4-80f3-41d5-9c50-9923d512e5b8" width="400"> | <img src="https://github.com/lorenzosuarez/Stori-Challenge/assets/55887438/77e9a1b3-ad57-4640-a0c8-1598d01d5191" width="400"> |
 
 
 ## License 📄
