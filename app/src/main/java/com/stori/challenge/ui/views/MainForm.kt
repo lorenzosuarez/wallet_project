@@ -1,6 +1,7 @@
 package com.stori.challenge.ui.views
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -46,7 +47,7 @@ import kotlinx.coroutines.launch
 fun MainForm(
     mainViewModel: MainViewModel,
     navController: NavHostController,
-    updateStatusBarColor: (Color) -> Unit,
+    updateStatusBarColor: (Color, Boolean) -> Unit,
 ) {
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(rememberTopAppBarState())
     val scope = rememberCoroutineScope()
@@ -59,6 +60,7 @@ fun MainForm(
     val authenticationState = mainViewModel.authenticationState.collectAsState().value
     val currentAuthState by rememberUpdatedState(authenticationState)
     val colors = MaterialTheme.colorScheme
+    val darkIcons = isSystemInDarkTheme()
 
     LaunchedEffect(Unit) {
         mainViewModel.authenticationState.collect { authState ->
@@ -84,10 +86,13 @@ fun MainForm(
     LaunchedEffect(navController) {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.route) {
-                Login.route -> updateStatusBarColor(colors.primary)
-                Success.route -> updateStatusBarColor(successColor)
-                Splash.route -> updateStatusBarColor(colors.secondary)
-                else -> updateStatusBarColor(Color.Transparent)
+                Login.route -> updateStatusBarColor(colors.primary, darkIcons)
+
+                Success.route -> updateStatusBarColor(successColor, darkIcons)
+
+                Splash.route -> updateStatusBarColor(colors.secondary, darkIcons)
+
+                else -> updateStatusBarColor(Color.Transparent, !darkIcons)
             }
         }
     }
