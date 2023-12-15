@@ -1,6 +1,6 @@
-# Stori Challenge 📱
+#  Wallet Sign in📱
 
-Welcome to the repository for the Stori Challenge App. This project epitomizes modern Android development, incorporating Material3 design 🎨, Jetpack Compose 🖌️, and a clean architecture 🏗️ that adheres to SOLID principles for a scalable, maintainable, and robust application.
+Welcome to the repository. This project epitomizes modern Android development, incorporating Material3 design 🎨, Jetpack Compose 🖌️, and a clean architecture 🏗️ that adheres to SOLID principles for a scalable, maintainable, and robust application.
 
 ## Project Overview 👀
 
