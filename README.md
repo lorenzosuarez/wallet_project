@@ -47,10 +47,10 @@ To clone and run this application, you'll need Git and Android Studio installed 
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/yourusername/stori-challenge.git
+$ git clone https://github.com/yourusername/wallet-project.git
 
 # Go into the repository
-$ cd stori-challenge
+$ cd wallet-project
 
 # Install dependencies
 $ Android Studio -> Sync Project with Gradle Files
