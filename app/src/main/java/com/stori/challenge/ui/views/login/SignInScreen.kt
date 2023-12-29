@@ -28,6 +28,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -97,9 +98,10 @@ fun SignInScreen(
                 contentAlignment = Alignment.Center,
             ) {
                 Image(
-                    modifier = Modifier.size(120.dp),
-                    painter = painterResource(R.drawable.ic_stori),
-                    contentDescription = "stori_logo",
+                    modifier = Modifier.size(160.dp),
+                    contentScale = ContentScale.Fit,
+                    painter = painterResource(R.drawable.ic_wallet),
+                    contentDescription = "ic_wallet",
                 )
             }
 

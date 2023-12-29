@@ -47,10 +47,10 @@ fun SplashScreen() {
             verticalArrangement = Arrangement.Center,
         ) {
             Image(
-                painter = painterResource(id = R.drawable.ic_stori),
-                contentDescription = "ic_stori",
-                contentScale = ContentScale.Fit,
                 modifier = Modifier.size(150.dp),
+                painter = painterResource(id = R.drawable.ic_wallet),
+                contentDescription = "ic_wallet",
+                contentScale = ContentScale.Fit,
             )
         }
     }
