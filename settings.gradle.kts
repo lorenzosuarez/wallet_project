@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "StoriChallenge"
+rootProject.name = "Wallet"
 include(":app")

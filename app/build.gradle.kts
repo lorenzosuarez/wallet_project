@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "com.stori.challenge"
+    namespace = "com.wallet.project"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.stori.challenge"
+        applicationId = "com.wallet.project"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

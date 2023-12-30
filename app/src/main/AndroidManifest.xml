@@ -16,7 +16,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:theme="@style/Theme.StoriChallenge"
+        android:theme="@style/Theme.WalletProject"
         tools:targetApi="31">
 
         <provider
@@ -34,7 +34,7 @@
             android:name=".ui.views.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.StoriChallenge">
+            android:theme="@style/Theme.WalletProject">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -5,7 +5,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("com.google.firebase:firebase-crashlytics-gradle:2.9.9")
+        classpath(libs.firebase.crashlytics.gradle)
     }
 }
 
