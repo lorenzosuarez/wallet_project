@@ -74,7 +74,7 @@ This project is built using a myriad of modern libraries and tools. Below is a l
 
 | Splash | Login| Register | Home (empty) |
 |---------|---------|---------|---------|
-| ![screenshot_splash_dark](https://github.com/lorenzosuarez/Stori-Challenge/assets/55887438/4aff59bb-4a4d-41a5-8ba8-78059c4e6195) | ![screenshot_login_dark](https://github.com/lorenzosuarez/Stori-Challenge/assets/55887438/2ca512e4-b056-49f0-84b3-247f5876f29c) | ![screenshot_register_dark](https://github.com/lorenzosuarez/Stori-Challenge/assets/55887438/57adc5cd-0a28-4f49-af8a-297728ca698f) | ![screenshot_home_empty_dark](https://github.com/lorenzosuarez/Stori-Challenge/assets/55887438/bbe2ba47-f456-424d-8291-0a2c25c769b9) |
+| ![screenshot_splash_dark](https://github.com/lorenzosuarez/Wallet-Project/assets/55887438/aa6305a7-af5e-46e8-8dc4-85dda4136ea7) | ![screenshot_login_dark](https://github.com/lorenzosuarez/Wallet-Project/assets/55887438/a6a0a204-4f1c-4b9f-aee7-9031fcfffc0f) | ![screenshot_register_dark](https://github.com/lorenzosuarez/Stori-Challenge/assets/55887438/57adc5cd-0a28-4f49-af8a-297728ca698f) | ![screenshot_home_empty_dark](https://github.com/lorenzosuarez/Stori-Challenge/assets/55887438/bbe2ba47-f456-424d-8291-0a2c25c769b9) |
 | Success register | Home | Details | Logout |
 | ![screenshot_success](https://github.com/lorenzosuarez/Stori-Challenge/assets/55887438/9a6242eb-15ef-4eee-9e6c-e55b24b2469b) | ![screenshot_home_dark](https://github.com/lorenzosuarez/Stori-Challenge/assets/55887438/3447ccd5-c588-4ce5-ad2b-4dccd2dbbeb2) | ![screenshot_details_dark](https://github.com/lorenzosuarez/Stori-Challenge/assets/55887438/e698257f-e2ef-4cfd-b4c7-214f2f5fe709) | ![screenshot_logout_dark](https://github.com/lorenzosuarez/Stori-Challenge/assets/55887438/c4008339-2bdc-400c-a987-9fb53d12215f) |
 
@@ -83,7 +83,7 @@ This project is built using a myriad of modern libraries and tools. Below is a l
 
 | Splash | Login| Register | Home (empty) |
 |---------|---------|---------|---------|
-| ![screenshot_splash](https://github.com/lorenzosuarez/Stori-Challenge/assets/55887438/235af294-4d7e-4587-a743-d6b8dbb6919e) | ![screenshot_login](https://github.com/lorenzosuarez/Stori-Challenge/assets/55887438/e5151521-0ee9-4025-a7e3-9c3358d5bad2) | ![screenshot_register](https://github.com/lorenzosuarez/Stori-Challenge/assets/55887438/9861f9c3-b065-4dd8-92af-5017f972dcab) | ![screenshot_home_empty](https://github.com/lorenzosuarez/Stori-Challenge/assets/55887438/9db2a1fd-1424-447b-bfa2-08ddd989a920) |
+| ![screenshot_splash](https://github.com/lorenzosuarez/Wallet-Project/assets/55887438/aa6305a7-af5e-46e8-8dc4-85dda4136ea7) | ![screenshot_login](https://github.com/lorenzosuarez/Wallet-Project/assets/55887438/3d8573ad-201e-4d11-8d94-3abddb55f65a) | ![screenshot_register](https://github.com/lorenzosuarez/Stori-Challenge/assets/55887438/9861f9c3-b065-4dd8-92af-5017f972dcab) | ![screenshot_home_empty](https://github.com/lorenzosuarez/Stori-Challenge/assets/55887438/9db2a1fd-1424-447b-bfa2-08ddd989a920) |
 | Success register | Home | Details | Logout |
 | ![screenshot_success](https://github.com/lorenzosuarez/Stori-Challenge/assets/55887438/9a6242eb-15ef-4eee-9e6c-e55b24b2469b) | ![screenshot_home](https://github.com/lorenzosuarez/Stori-Challenge/assets/55887438/7c7c5f6a-7700-46bd-b9f1-d01f60e42836) | ![screenshot_details](https://github.com/lorenzosuarez/Stori-Challenge/assets/55887438/54c48258-b294-4739-ab75-9bc136e94a2a) |![screenshot_logout](https://github.com/lorenzosuarez/Stori-Challenge/assets/55887438/c8a00ee4-5e49-42a1-be8d-0b19d03508b4) |
 
@@ -92,7 +92,10 @@ This project is built using a myriad of modern libraries and tools. Below is a l
 
 | Light demo | Dark demo |
 |------------|-----------|
-| <img src="https://github.com/lorenzosuarez/Stori-Challenge/assets/55887438/90a2f534-94c9-4df2-ac5f-3f41062fb682" width="400"> | <img src="https://github.com/lorenzosuarez/Stori-Challenge/assets/55887438/215fac7d-76f6-43bc-a679-288d2459f224" width="400"> |
+| <img src="https://github.com/lorenzosuarez/Wallet-Project/assets/55887438/b7efc9fd-f890-454b-aca9-a5bc506de983" width="400"> | <img src="https://github.com/lorenzosuarez/Wallet-Project/assets/55887438/3b9e30b2-4de1-4b6c-9852-cbec3afae660" width="400"> |
+
+
+
 
 
 
