@@ -15,6 +15,7 @@
     <string name="log_out_message_title">Do you want to log out?</string>
     <string name="log_out_message_subtitle">You will be returned to the login screen</string>
     <string name="success">Success!</string>
+    <string name="pay">Pay</string>
 
 
     <!--    screen title     -->

@@ -4,14 +4,18 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
@@ -25,7 +29,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.wallet.project.R
@@ -42,6 +49,7 @@ import com.wallet.project.ui.navigation.Screen.Register
 import com.wallet.project.ui.navigation.Screen.Splash
 import com.wallet.project.ui.navigation.Screen.Success
 import com.wallet.project.ui.navigation.UID
+import com.wallet.project.ui.theme.Dimensions
 import com.wallet.project.ui.theme.LocalDim
 import com.wallet.project.ui.theme.successColor
 import com.wallet.project.ui.viewmodels.MainViewModel
@@ -55,6 +63,7 @@ fun MainForm(
     navController: NavHostController,
     updateStatusBarColor: (Color, Boolean) -> Unit,
 ) {
+    val dimensions = LocalDim.current
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(rememberTopAppBarState())
     val scope = rememberCoroutineScope()
     val snackbarHostState = remember { SnackbarHostState() }
@@ -107,16 +116,28 @@ fun MainForm(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         floatingActionButton = {
             if (currentScreen is Home) {
-                FloatingActionButton(
+                ExtendedFloatingActionButton(
+                    modifier = Modifier.padding(all = dimensions.spaceMedium),
+                    containerColor = MaterialTheme.colorScheme.inversePrimary,
                     onClick = { /* */ },
-                    containerColor = MaterialTheme.colorScheme.secondary,
-                ) {
-                    Icon(
-                        modifier = Modifier.size(40.dp),
-                        painter = painterResource(id = R.drawable.ic_nfc),
-                        contentDescription = "nfc",
-                    )
-                }
+                    text = {
+                        Text(
+                            text = stringResource(id = R.string.pay),
+                            style = MaterialTheme.typography.labelLarge.copy(
+                                fontSize = 19.sp,
+                                fontWeight = FontWeight.ExtraBold,
+                                letterSpacing = 2.sp,
+                            ),
+                        )
+                    },
+                    icon = {
+                        Icon(
+                            modifier = Modifier.size(20.dp),
+                            painter = painterResource(id = R.drawable.ic_nfc),
+                            contentDescription = "nfc",
+                        )
+                    }
+                )
             }
         },
         snackbarHost = {
